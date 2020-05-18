@@ -6,9 +6,12 @@ const greeting: string = 'Hello';
 const numbers: number[] = [1, 2, 3];
 */
 
-import express, { Application, Request, Response, NextFunction} from 'express';
+//Importamos la clase block que formará cada uno de los elementos del blockchain
 import Block from './Block';
+//Interfaz blockchain que se implementa en la clase LeonChain.
 import Iblockchain from './Iblockchain';
+import { v4 as uuid } from 'uuid';
+import sha256 from 'crypto-js/sha256';
 
 
 class LeonChain implements Iblockchain {
@@ -17,30 +20,79 @@ class LeonChain implements Iblockchain {
     currentNodeUrl: string;
     networkNodes: string[];
 
-    constructor(chain: Block[], pendingTransactions: object[], currentNodeUrl: string, networkNodes: string[]){
-        this.chain = chain;
-        this.pendingTransactions = pendingTransactions;
-        this.currentNodeUrl = currentNodeUrl;
-        this.networkNodes = networkNodes;
+    
+    
+    constructor(){
+        this.chain = []
+        this.pendingTransactions = [];
+        this.currentNodeUrl = "";
+        this.networkNodes = [];
+    } 
+    
 
+    
+    
+
+    //Implementación de los métodos del interfaz Iblockchain
+
+    creacionGenesisBlock(){
+        const genesisBlock = new Block(0, Date.now(), {GenesisBlock: "Welcome to my blockchain. I did it my way"}, 0, "BlockHash", "PreviousBlockHash");
+
+        this.chain.push(genesisBlock);
+        return genesisBlock;
     }
+    
     createNewBlock(nonce: number, previousBlockHash: string, hash: string): Block {
-        throw new Error("Method not implemented.");
+       const newBlock = new Block(this.chain.length + 1, Date.now(), this.pendingTransactions, nonce, previousBlockHash, hash)
+       
+        //Tras llenar el nuevo bloque con todas las transacciones pendientes, vaciamos el array de transacciones pendientes
+        this.pendingTransactions = [];
+        
+        //Añadimos el bloque al blockchain
+        this.chain.push(newBlock);
+
+        //Devolvemos el bloque
+        return newBlock
     }
-    getLastBlock(): number {
-        throw new Error("Method not implemented.");
+
+    getLastBlock(): Block {
+        return this.chain[this.chain.length - 1];
     }
+
     createNewTransaction(amount: number, sender: string, recipient: string): object {
-        throw new Error("Method not implemented.");
+        const newTransaction = {
+            amount: amount,
+            sender: sender,
+            recipient: recipient,
+            transactionId: uuid().split('-').join('')
+        }
+        
+        return newTransaction;
     }
-    addTransactionToPendingTransactions(transactionObj: object): Block {
-        throw new Error("Method not implemented.");
+
+    addTransactionToPendingTransactions(transactionObj: object): object[] {
+        this.pendingTransactions.push(transactionObj);
+
+        return this.pendingTransactions;
     }
+
     hashBlock(previousBlockHash: string, currentBlockData: object, nonce: number): string {
-        throw new Error("Method not implemented.");
+        const dataAsString = previousBlockHash + nonce.toString() + JSON.stringify(currentBlockData);
+        const hash = JSON.stringify(sha256(dataAsString));
+    
+        return hash;
     }
+
     proofOfWork(previousBlockHash: string, currentBlockData: object): number {
-        throw new Error("Method not implemented.");
+        let nonce = 0;
+        let hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+
+        while(hash.substring(0, 4) !== '0000'){
+            nonce++;
+            hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
+        }
+
+        return nonce
     }
     getBlock(blockHash: string): Block {
         throw new Error("Method not implemented.");
@@ -53,7 +105,7 @@ class LeonChain implements Iblockchain {
     }
 }
 
-const app: Application = express();
+
 
 
 /*
@@ -76,11 +128,5 @@ let result = add(10, 20);
 
 console.log(result); */
 
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
-    res.send('Hello');
-});
 
-
-app.listen(5000, () => {
-    console.log("Server running")
-})
+export default LeonChain;
