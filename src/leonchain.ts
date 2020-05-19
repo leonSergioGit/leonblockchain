@@ -36,23 +36,30 @@ class LeonChain implements Iblockchain {
     //Implementación de los métodos del interfaz Iblockchain
 
     creacionGenesisBlock(){
-        const genesisBlock = new Block(0, Date.now(), {GenesisBlock: "Welcome to my blockchain. I did it my way"}, 0, "BlockHash", "PreviousBlockHash");
+        const genesisBlock = new Block(0, Date.now(), ["Welcome to my blockchain. I did it my way"], 0, "BlockHash", "PreviousBlockHash");
 
         this.chain.push(genesisBlock);
         return genesisBlock;
     }
     
     createNewBlock(nonce: number, previousBlockHash: string, hash: string): Block {
-       const newBlock = new Block(this.chain.length + 1, Date.now(), this.pendingTransactions, nonce, previousBlockHash, hash)
-       
-        //Tras llenar el nuevo bloque con todas las transacciones pendientes, vaciamos el array de transacciones pendientes
-        this.pendingTransactions = [];
-        
-        //Añadimos el bloque al blockchain
-        this.chain.push(newBlock);
 
-        //Devolvemos el bloque
-        return newBlock
+        let transacciones = [];
+        let newBlock: Block;
+        if(this.pendingTransactions.length > 12){
+            for(let i = 0; i < 10; i++){
+                transacciones.push(this.pendingTransactions.shift())
+            }
+             newBlock = new Block(this.chain.length + 1, Date.now(), transacciones, nonce, previousBlockHash, hash)
+
+                //Añadimos el bloque al blockchain
+            this.chain.push(newBlock);
+
+            //Devolvemos el bloque
+            return newBlock
+        }
+
+        return new Block(0, Date.now(), [], 0, "afadsf", "!afd");
     }
 
     getLastBlock(): Block {
