@@ -46,7 +46,7 @@ class LeonChain implements Iblockchain {
 
         let transacciones = [];
         let newBlock: Block;
-        if(this.pendingTransactions.length > 12){
+        if(this.pendingTransactions.length > 10){
             for(let i = 0; i < 10; i++){
                 transacciones.push(this.pendingTransactions.shift())
             }
@@ -112,28 +112,6 @@ class LeonChain implements Iblockchain {
     }
 }
 
-
-
-
-/*
-let blocks = new Block(10, new Date(), {asfaf: "adf"}, 30, "fadsfdfs", "asdfasdf");
-
-
-
-const blockChain = new LeonChain([blocks], [{faf: "hola"}], "asdfasdf", ["sdfasfaf"]);
-
-console.log(blockChain.chain[0].transactions)
-
-
-*/
-/*
-
-
-const add = (a: number, b: number): number => a + b;
-
-let result = add(10, 20);
-
-console.log(result); */
 
 
 export default LeonChain;

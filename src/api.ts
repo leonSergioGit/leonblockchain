@@ -43,14 +43,14 @@ const server = app.listen(5000, () => {
 const io = socket(server);
 
 io.on('connection', (socket) => { 
-   
-    socket.emit('entireBlockchain', JSON.stringify(leonChain));
+    console.log("new connection")
+    
 
 })
 
 app.get('/', (req: Request, res: Response, next: NextFunction) => {
    
-    res.send(JSON.stringify(leonChain));
+    res.send(leonChain.chain);
 }); 
 
 
@@ -60,12 +60,13 @@ app.post('/transaction', (req, res) => {
     const blockIndex = leonChain.addTransactionToPendingTransactions(newTransaction3);
     
     if(leonChain.pendingTransactions.length > 10){
-        io.emit('diezTransacciones', "Hay que minar");
+        leonChain.createNewBlock(2, "3434", "dsfadf")
+        io.emit("updateChain", leonChain.chain)
     }
     
 
     res.json({  note: `Transaction will be added in block ` });
-    console.log(leonChain.pendingTransactions);
+    //console.log(leonChain.pendingTransactions);
 
 
 });
@@ -78,6 +79,5 @@ app.get('/getPendingTransactions', (req, res) => {
 
 app.get('/minar', (req: Request, res: Response, next: NextFunction) => {
     //It works more or less, but we should find a way with socket to just send the mining request to just one client
-    leonChain.createNewBlock(2, "3434", "dsfadf");
-    res.send(leonChain.chain);
+    let newBlock = leonChain.createNewBlock(2, "3434", "dsfadf");
 });
