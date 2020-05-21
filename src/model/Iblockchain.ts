@@ -21,7 +21,6 @@ interface Iblockchain {
     
     getLastBlock(): Block;
     
-    createNewTransaction(amount: number, sender: string, recipient: string): object; 
     
     addTransactionToPendingTransactions(transactionObj: object): object[];
     

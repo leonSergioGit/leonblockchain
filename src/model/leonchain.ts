@@ -8,6 +8,7 @@ const numbers: number[] = [1, 2, 3];
 
 //Importamos la clase block que formará cada uno de los elementos del blockchain
 import Block from './Block';
+import Transaction from './Transaction';
 //Interfaz blockchain que se implementa en la clase LeonChain.
 import Iblockchain from './Iblockchain';
 import { v4 as uuid } from 'uuid';
@@ -66,14 +67,10 @@ class LeonChain implements Iblockchain {
         return this.chain[this.chain.length - 1];
     }
 
-    createNewTransaction(amount: number, sender: string, recipient: string): object {
-        const newTransaction = {
-            amount: amount,
-            sender: sender,
-            recipient: recipient,
-            transactionId: uuid().split('-').join('')
-        }
-        
+    createNewTransaction(hospital: string, country: string, patientInfo: string, symptoms: string): Transaction {
+        let idTransaction = uuid().split('-').join('');
+        const newTransaction = new Transaction(hospital, country, patientInfo, symptoms, idTransaction); 
+      
         return newTransaction;
     }
 
