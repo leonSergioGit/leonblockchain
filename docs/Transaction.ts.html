@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Block.ts</title>
+  <title> Transaction.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -86,7 +86,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>Block.ts</h1>
+                    <h1>Transaction.ts</h1>
                 </header>
                 
 
@@ -95,47 +95,42 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>
-/**
- * Clase Block que serán los bloques de los cuales estará formado el blockchain.
- * @class 
- * @property {number} index   Index del bloque.
- * @property {Date} timestamp Fecha de creación del bloque.
- * @property {object} transactions Conjunto de las transacciones incluidas en el bloque.
- * @property {number} nonce Numero que se intenta resolver para la minería.
- * @property {string} hash Hash codificación mediante el algoritmo sha256 del bloque.
- * @property {string} previousBlockHash Hash del anterior bloque.
- */
-class Block {
-    index: number;
-    timestamp: number;
-    transactions: object;
-    nonce: number;
-    hash: string;
-    previousBlockHash: string;
+            <pre class="prettyprint source linenums"><code>/**
+* Clase transacciones que serán incluidas en los bloques los cuales forman el blockchain.
+* @class 
+* @property {string} hospital  Nombre del hospital.
+* @property {string} country País del hospital.
+* @property {string} patientInfo Información del paciente.
+* @property {string} symptoms Síntomas del paciente.
+* @property {string} transactionId Id de la transacción.
+*/
+class Transaction {
+    hospital: string;
+    country: string;
+    patientInfo: string;
+    symptoms: string;
+    transactionId: string;
 
     /**
      * @constructs
-     * @param index Index del bloque.
-     * @param timestamp Fecha de creación del bloque.
-     * @param transactions Conjunto de las transacciones incluidas en el bloque.
-     * @param nonce Numero que se intenta resolver para la minería.
-     * @param hash Hash codificación mediante el algoritmo sha256 del bloque.
-     * @param previousBlockHash Hash del anterior bloque.
+     * @param hospital Nombre del hospital.
+     * @param country País del hospital.
+     * @param patientInfo Información del paciente.
+     * @param symptoms Síntomas del paciente.
+     * @param transactionId Id de la transacción.
      */
-    constructor(index: number, timestamp: number, transactions: object, nonce: number, hash: string, previousBlockHash: string) {
-        this.index = index;
-        this.timestamp = timestamp;
-        this.transactions = transactions;
-        this.nonce = nonce;
-        this.hash = hash;
-        this.previousBlockHash = previousBlockHash;
+    constructor(hospital: string, country: string, patientInfo: string, symptoms: string, transactionId: string) {
+        this.hospital = hospital;
+        this.country = country;
+        this.patientInfo = patientInfo;
+        this.symptoms = symptoms;
+        this.transactionId = transactionId;
     }
 
 }
 
 
-export default Block;</code></pre>
+export default Transaction;</code></pre>
         </article>
     </section>
 

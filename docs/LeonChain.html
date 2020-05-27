@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Iblockchain</title>
+  <title> LeonChain</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -83,8 +83,8 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Interface</p>
-                    <h1>Iblockchain</h1>
+                    <p>Class</p>
+                    <h1>LeonChain</h1>
                 </header>
                 
 
@@ -95,7 +95,9 @@
 
 <header>
     
-        <h2>Iblockchain</h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>LeonChain<span class="signature">()</span><span class="type-signature"></span></h2>
+        
+            <div class="class-description">Clase que es un Blockchain y que implementa la Interfaz IBlockchain.</div>
         
     
 </header>
@@ -104,10 +106,44 @@
     <div class="container-overview">
     
         
-            <div class="description">Este archivo comprende la interfaz IBlockchain la cual será implementada en cualquier blockchain que quisieramos crear.</div>
-        
+            <div class='vertical-section'>
+                <div class="members">
+                    <div class="member">
+                        <div class=name>
+                            <span class="tag">Constructor</span>
+                        </div>
+                        
 
+
+    
+    <h4 class="name" id="LeonChain">
+        <a class="href-link" href="#LeonChain">#</a>
         
+        <span class="code-name">
+            
+                new LeonChain<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Constructor de la clase blockchain que crea el array que formará la cadena, el array de las transacciones pendientes y el array de los nodos
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
 
 
 <dl class="details">
@@ -122,6 +158,13 @@
 
     
 
+    
+    <dt class="implements">Implements:</dt>
+    <dd class="implements"><ul>
+        
+            <li>Implementa la interfaz Iblockchain</li>
+        
+    </ul></dd>
     
 
     
@@ -143,15 +186,38 @@
 
     
         <p class="tag-source">
-            <a href="model_Iblockchain.ts.html" class="button">View Source</a>
+            <a href="model_leonchain.ts.html" class="button">View Source</a>
             <span>
-                <a href="model_Iblockchain.ts.html">model/Iblockchain.ts</a>, <a href="model_Iblockchain.ts.html#line5">line 5</a>
+                <a href="model_leonchain.ts.html">model/leonchain.ts</a>, <a href="model_leonchain.ts.html#line29">line 29</a>
             </span>
         </p>
     
 </dl>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
         
     
     </div>
@@ -184,7 +250,7 @@
         
         <span class="code-name">
             
-                addTransactionToPendingTransactions<span class="signature">(transactionObj)</span><span class="type-signature"> &rarr; {Array}</span>
+                addTransactionToPendingTransactions<span class="signature">(transactionObj)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -193,7 +259,7 @@
     
     
     <div class="description">
-        Añade una nueva transacción a las transacciones pendientes en espera de ser añadidas a un bloque.
+        Función que añade una transacción al array de transacciones pendientes.
     </div>
     
 
@@ -242,7 +308,7 @@
 
   
 
-  <td class="description last"></td>
+  <td class="description last">Transacción que será añadida al array de transacciones pendientes.</td>
 </tr>
 
 
@@ -288,9 +354,9 @@
 
     
         <p class="tag-source">
-            <a href="model_Iblockchain.ts.html" class="button">View Source</a>
+            <a href="model_leonchain.ts.html" class="button">View Source</a>
             <span>
-                <a href="model_Iblockchain.ts.html">model/Iblockchain.ts</a>, <a href="model_Iblockchain.ts.html#line29">line 29</a>
+                <a href="model_leonchain.ts.html">model/leonchain.ts</a>, <a href="model_leonchain.ts.html#line94">line 94</a>
             </span>
         </p>
     
@@ -312,29 +378,6 @@
 
 
 
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<span class="param-type">Array</span>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
 
 
 
@@ -350,7 +393,7 @@
         
         <span class="code-name">
             
-                createNewBlock<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Block.html">Block</a>}</span>
+                createNewBlock<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -359,7 +402,7 @@
     
     
     <div class="description">
-        Crea un nuevo bloque y lo añade a la cadena.
+        Función que crea un bloque con todos los datos necesarios y 10 transacciones y lo añade al blockchain. Devuelve el bloque creado
     </div>
     
 
@@ -408,9 +451,9 @@
 
     
         <p class="tag-source">
-            <a href="model_Iblockchain.ts.html" class="button">View Source</a>
+            <a href="model_leonchain.ts.html" class="button">View Source</a>
             <span>
-                <a href="model_Iblockchain.ts.html">model/Iblockchain.ts</a>, <a href="model_Iblockchain.ts.html#line16">line 16</a>
+                <a href="model_leonchain.ts.html">model/leonchain.ts</a>, <a href="model_leonchain.ts.html#line49">line 49</a>
             </span>
         </p>
     
@@ -433,28 +476,208 @@
 
 
 
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
+
+
+
+</div>
             
-                    
+                <div class="member">
 
-<div class="columns">
+
     
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
+    <h4 class="name" id="createNewTransaction">
+        <a class="href-link" href="#createNewTransaction">#</a>
         
-<span class="param-type"><a href="Block.html">Block</a></span>
+        <span class="code-name">
+            
+                createNewTransaction<span class="signature">(hospital, country, patientInfo, symptoms)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
 
-
+    
+    
+    <div class="description">
+        Functión que crea una nueva transacción.
     </div>
     
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>hospital</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Nombre del hospital de quien realiza la transacción.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>country</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">País al que pertenece el hospital.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>patientInfo</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Información del paciente.</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>symptoms</code></td>
+  
+
+  <td class="type">
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Síntomas.</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
 </div>
 
-                
-        </div>
-    </div>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="model_leonchain.ts.html" class="button">View Source</a>
+            <span>
+                <a href="model_leonchain.ts.html">model/leonchain.ts</a>, <a href="model_leonchain.ts.html#line84">line 84</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -470,7 +693,7 @@
         
         <span class="code-name">
             
-                creationGenesisBlock<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Block.html">Block</a>}</span>
+                creationGenesisBlock<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -479,7 +702,7 @@
     
     
     <div class="description">
-        Crea lo que se conoce como el "genesis block" el cual es el primer bloque de la cadena y lo devuelve.
+        Función que crea el conocido como genesis block. El genesis block es el primer bloque de la cadena, el cual debido a las peculiares características del Blockchain, debe ser creado manualmente (hardcoded).
     </div>
     
 
@@ -528,9 +751,9 @@
 
     
         <p class="tag-source">
-            <a href="model_Iblockchain.ts.html" class="button">View Source</a>
+            <a href="model_leonchain.ts.html" class="button">View Source</a>
             <span>
-                <a href="model_Iblockchain.ts.html">model/Iblockchain.ts</a>, <a href="model_Iblockchain.ts.html#line10">line 10</a>
+                <a href="model_leonchain.ts.html">model/leonchain.ts</a>, <a href="model_leonchain.ts.html#line40">line 40</a>
             </span>
         </p>
     
@@ -553,29 +776,6 @@
 
 
 
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<span class="param-type"><a href="Block.html">Block</a></span>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
-
 
 
 
@@ -590,7 +790,7 @@
         
         <span class="code-name">
             
-                getBlock<span class="signature">(blockHash)</span><span class="type-signature"> &rarr; {<a href="Block.html">Block</a>}</span>
+                getBlock<span class="signature">(blockHash)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -599,7 +799,7 @@
     
     
     <div class="description">
-        Busca y devuelve un bloque a partir de su hash.
+        Función que devuelve un bloque a partir de su hash.
     </div>
     
 
@@ -648,7 +848,7 @@
 
   
 
-  <td class="description last">El hash del bloque que se quiere obtener.</td>
+  <td class="description last">Hash del bloque que se desea obtener.</td>
 </tr>
 
 
@@ -694,9 +894,9 @@
 
     
         <p class="tag-source">
-            <a href="model_Iblockchain.ts.html" class="button">View Source</a>
+            <a href="model_leonchain.ts.html" class="button">View Source</a>
             <span>
-                <a href="model_Iblockchain.ts.html">model/Iblockchain.ts</a>, <a href="model_Iblockchain.ts.html#line52">line 52</a>
+                <a href="model_leonchain.ts.html">model/leonchain.ts</a>, <a href="model_leonchain.ts.html#line123">line 123</a>
             </span>
         </p>
     
@@ -719,29 +919,6 @@
 
 
 
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<span class="param-type"><a href="Block.html">Block</a></span>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
-
 
 
 
@@ -756,7 +933,7 @@
         
         <span class="code-name">
             
-                getLastBlock<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Block.html">Block</a>}</span>
+                getLastBlock<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -765,7 +942,7 @@
     
     
     <div class="description">
-        Devuelve el último bloque de la cadena.
+        Función que devuelve el último bloque de la cadena.
     </div>
     
 
@@ -814,9 +991,9 @@
 
     
         <p class="tag-source">
-            <a href="model_Iblockchain.ts.html" class="button">View Source</a>
+            <a href="model_leonchain.ts.html" class="button">View Source</a>
             <span>
-                <a href="model_Iblockchain.ts.html">model/Iblockchain.ts</a>, <a href="model_Iblockchain.ts.html#line23">line 23</a>
+                <a href="model_leonchain.ts.html">model/leonchain.ts</a>, <a href="model_leonchain.ts.html#line73">line 73</a>
             </span>
         </p>
     
@@ -839,29 +1016,6 @@
 
 
 
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<span class="param-type"><a href="Block.html">Block</a></span>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
-
 
 
 
@@ -876,7 +1030,7 @@
         
         <span class="code-name">
             
-                getTransaction<span class="signature">(transactionId)</span><span class="type-signature"> &rarr; {object}</span>
+                getTransaction<span class="signature">(transactionId)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -885,7 +1039,7 @@
     
     
     <div class="description">
-        Devuelve una transacción a partir de su id.
+        Función que devuelve una transacción a partir de su id.
     </div>
     
 
@@ -928,18 +1082,13 @@
 
   <td class="type">
   
-      
-<span class="param-type">string</span>
-
-
-  
   </td>
 
   
 
   
 
-  <td class="description last">Id de la trasacción que queremos obtener.</td>
+  <td class="description last">Id de la trasacción que se desea obtener.</td>
 </tr>
 
 
@@ -985,9 +1134,9 @@
 
     
         <p class="tag-source">
-            <a href="model_Iblockchain.ts.html" class="button">View Source</a>
+            <a href="model_leonchain.ts.html" class="button">View Source</a>
             <span>
-                <a href="model_Iblockchain.ts.html">model/Iblockchain.ts</a>, <a href="model_Iblockchain.ts.html#line59">line 59</a>
+                <a href="model_leonchain.ts.html">model/leonchain.ts</a>, <a href="model_leonchain.ts.html#line131">line 131</a>
             </span>
         </p>
     
@@ -1010,29 +1159,6 @@
 
 
 
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<span class="param-type">object</span>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
-
 
 
 
@@ -1047,7 +1173,7 @@
         
         <span class="code-name">
             
-                hashBlock<span class="signature">(previousBlockHash, currentBlockData, nonce)</span><span class="type-signature"> &rarr; {string}</span>
+                hashBlock<span class="signature">(previousBlockHash, currentBlockData, nonce)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -1056,7 +1182,7 @@
     
     
     <div class="description">
-        Codifica el bloque mediante el algoritmo sha256.
+        Función que pasa todo el bloque para codificarlo-hashearlo mediante el algoritmo sha256.
     </div>
     
 
@@ -1099,18 +1225,13 @@
 
   <td class="type">
   
-      
-<span class="param-type">string</span>
-
-
-  
   </td>
 
   
 
   
 
-  <td class="description last">Hash del bloque anterior.</td>
+  <td class="description last">Hash del anterior bloque.</td>
 </tr>
 
 
@@ -1123,11 +1244,6 @@
   
 
   <td class="type">
-  
-      
-<span class="param-type">object</span>
-
-
   
   </td>
 
@@ -1149,18 +1265,13 @@
 
   <td class="type">
   
-      
-<span class="param-type">number</span>
-
-
-  
   </td>
 
   
 
   
 
-  <td class="description last">Nonce del bloque actual.</td>
+  <td class="description last">Número a resolver por la minería.</td>
 </tr>
 
 
@@ -1206,9 +1317,9 @@
 
     
         <p class="tag-source">
-            <a href="model_Iblockchain.ts.html" class="button">View Source</a>
+            <a href="model_leonchain.ts.html" class="button">View Source</a>
             <span>
-                <a href="model_Iblockchain.ts.html">model/Iblockchain.ts</a>, <a href="model_Iblockchain.ts.html#line36">line 36</a>
+                <a href="model_leonchain.ts.html">model/leonchain.ts</a>, <a href="model_leonchain.ts.html#line105">line 105</a>
             </span>
         </p>
     
@@ -1231,29 +1342,6 @@
 
 
 
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<span class="param-type">string</span>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
-
 
 
 
@@ -1268,13 +1356,17 @@
         
         <span class="code-name">
             
-                proofOfWork<span class="signature">(previousBlockHash, currentBlockData)</span><span class="type-signature"> &rarr; {number}</span>
+                proofOfWork<span class="signature">(previousBlockHash, currentBlockData)</span><span class="type-signature"></span>
             
         </span>
     </h4>
     
 
     
+    
+    <div class="description">
+        Función que consiste en resolver el número nonce. Es en esto en lo que consiste la minería.
+    </div>
     
 
 
@@ -1322,7 +1414,7 @@
 
   
 
-  <td class="description last">Hash del bloque anterior.</td>
+  <td class="description last">Hash del anterior bloque.</td>
 </tr>
 
 
@@ -1388,9 +1480,9 @@
 
     
         <p class="tag-source">
-            <a href="model_Iblockchain.ts.html" class="button">View Source</a>
+            <a href="model_leonchain.ts.html" class="button">View Source</a>
             <span>
-                <a href="model_Iblockchain.ts.html">model/Iblockchain.ts</a>, <a href="model_Iblockchain.ts.html#line45">line 45</a>
+                <a href="model_leonchain.ts.html">model/leonchain.ts</a>, <a href="model_leonchain.ts.html#line115">line 115</a>
             </span>
         </p>
     
@@ -1412,29 +1504,6 @@
 
 
 
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<span class="param-type">number</span>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
 
 
 

@@ -78,7 +78,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Block.html">Block</a></li></ul><h3>Interfaces</h3><ul><li><a href="Iblockchain.html">Iblockchain</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Block.html">Block</a></li><li><a href="LeonChain.html">LeonChain</a></li><li><a href="Transaction.html">Transaction</a></li></ul><h3>Interfaces</h3><ul><li><a href="Iblockchain.html">Iblockchain</a></li></ul></div>
                 
             </nav>
         </div>
@@ -100,9 +100,9 @@ import Block from './Block';
 import { Interface } from 'readline';
 
 /**
- * @typedef {interface} 
+ * @typedef
  * @property {Array&lt;Block>} chain   La cadena de bloques que formará el blockchain'
- * @property {Array&lt;object>} pendingTransactions El array que formará la lista de las transacciones que están pendientes de ser añadidas a un bloque
+ * @property {Array&lt;object>} pendingTransactions El array que formará la lista de las transacciones que están pendientes de ser añadidas a un bloque.
  * @property {string} currentNodeUrl La dirección del nodo de uno mismo
  * @property {Array&lt;string>} networkNodes Array con todas las direcciones de todos los nodos activos
  */
@@ -113,26 +113,70 @@ interface Iblockchain {
     networkNodes: string[];
 
 
+    /**
+     * Crea lo que se conoce como el "genesis block" el cual es el primer bloque de la cadena y lo devuelve.
+     * @function
+     */
+    creationGenesisBlock(): Block;
+
+    /**
+     * Crea un nuevo bloque y lo añade a la cadena.
+     * @function 
+     * @param {number} nonce Número que se intenta resolver en la minería.
+     * @param {string} previousBlockHash El hash del anterior bloque de la cadena.
+     * @param {string} hash El hash del actual bloque.
+     * 
+     */
     createNewBlock(nonce: number, previousBlockHash: string, hash: string): Block;
     
-    getLastBlock(): number;
+    /**
+     * Devuelve el último bloque de la cadena.
+     * @function
+     */
+    getLastBlock(): Block;
     
-    createNewTransaction(amount: number, sender: string, recipient: string): object; 
+    /**
+     * Añade una nueva transacción a las transacciones pendientes en espera de ser añadidas a un bloque.
+     * @function
+     * @param transactionObj 
+     */
+    addTransactionToPendingTransactions(transactionObj: object): object[];
     
-    addTransactionToPendingTransactions(transactionObj: object): Block;
-    
+    /**
+     * Codifica el bloque mediante el algoritmo sha256.
+     * @function
+     * @param {string} previousBlockHash Hash del bloque anterior.
+     * @param {object} currentBlockData Datos del bloque actual.
+     * @param {number} nonce Nonce del bloque actual.
+     */
     hashBlock(previousBlockHash: string, currentBlockData: object, nonce: number): string;
     
+    /**
+     * @function
+     * @param previousBlockHash Hash del bloque anterior.
+     * @param currentBlockData  Datos del bloque actual.
+     */
     proofOfWork(previousBlockHash: string, currentBlockData: object): number;
     
+    /**
+     * Busca y devuelve un bloque a partir de su hash.
+     * @function 
+     * @param blockHash El hash del bloque que se quiere obtener.
+     */
     getBlock(blockHash: string): Block;
     
-    getTransaction(transactionId: string): object;
-    
-    getAddressData(address: string): object;
 
+    /**
+     * Devuelve una transacción a partir de su id.
+     * @function
+     * @param {string} transactionId Id de la trasacción que queremos obtener.
+     */
+    getTransaction(transactionId: string): object;
 }
 
+/**
+ * @exports
+ */
 export default Iblockchain;</code></pre>
         </article>
     </section>

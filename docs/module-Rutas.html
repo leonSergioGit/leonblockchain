@@ -5,7 +5,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Home</title>
+  <title> Rutas</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -83,36 +83,10 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Title</p>
-                    <h1>Home</h1>
+                    <p>Module</p>
+                    <h1>Rutas</h1>
                 </header>
                 
-
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
 
 
 
@@ -121,7 +95,8 @@
 
 <header>
     
-        <h2>api.ts</h2>
+        
+            
         
     
 </header>
@@ -130,10 +105,23 @@
     <div class="container-overview">
     
         
-            <div class="description">Archivo en el que inicializamos el servidor con todas las dependencias necesarias.</div>
+            <div class="description">Las rutas y las diferentes funcionalidades de la API</div>
         
 
         
+            
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <dl class="details">
@@ -171,11 +159,31 @@
         <p class="tag-source">
             <a href="api.ts.html" class="button">View Source</a>
             <span>
-                <a href="api.ts.html">api.ts</a>, <a href="api.ts.html#line12">line 12</a>
+                <a href="api.ts.html">api.ts</a>, <a href="api.ts.html#line50">line 50</a>
             </span>
         </p>
     
 </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         
@@ -185,7 +193,11 @@
     
 
     
+        <h3 class="subsection-title">Requires</h3>
 
+        <ul>
+            <li>module:express</li>
+        </ul>
     
 
     
@@ -199,35 +211,46 @@
     
 
     
+        <div class='vertical-section'>
+            <h1>Methods</h1>
+            <div class="members">
+            
+                <div class="member">
+
 
     
-</article>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2>model/Block.ts</h2>
+    <h4 class="name" id="~/">
+        <a class="href-link" href="#~/">#</a>
         
+            
+                <span class='tag'>inner</span>
+            
+        
+        <span class="code-name">
+            
+                /<span class="signature">()</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
     
-</header>
 
-<article>
-    <div class="container-overview">
     
-        
-            <div class="description">Este archivo comprende la clase Block y que consistirá en el bloque que formará la cadena de bloques Blockchain</div>
-        
+    
+    <div class="description">
+        Ruta que devuelve el blockchain en su totalidad
+    </div>
+    
 
-        
+
+
+
+
+
+
+
+
+
+
 
 
 <dl class="details">
@@ -263,65 +286,198 @@
 
     
         <p class="tag-source">
-            <a href="model_Block.ts.html" class="button">View Source</a>
+            <a href="api.ts.html" class="button">View Source</a>
             <span>
-                <a href="model_Block.ts.html">model/Block.ts</a>, <a href="model_Block.ts.html#line2">line 2</a>
+                <a href="api.ts.html">api.ts</a>, <a href="api.ts.html#line55">line 55</a>
             </span>
         </p>
     
 </dl>
 
 
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
     
+    <h4 class="name" id="~/transaction">
+        <a class="href-link" href="#~/transaction">#</a>
+        
+            
+                <span class='tag'>inner</span>
+            
+        
+        <span class="code-name">
+            
+                /transaction<span class="signature">(hospital, country, patientInfo, symptoms)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        Ruta del tipo POST en la cual enviamos una transacción a través del body para que se añadida a las transacciones pendientes y que posteriormente será añadida a un bloque
     </div>
     
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
 
-    
+            <th>Type</th>
 
-    
+            
 
-    
+            
 
-    
+            <th class="last">Description</th>
+        </tr>
+        </thead>
 
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2>model/leonchain.ts</h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Archivo que consiste en la clase leonchain, que es donde creamos el blockchain, y que implementa la interfaz IBlockchain</div>
+        <tbody>
         
 
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>hospital</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Se envía a través del body</td>
+</tr>
+
+
         
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>country</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Se envía a través del body</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>patientInfo</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Se envía a través del body</td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>symptoms</code></td>
+  
+
+  <td class="type">
+  
+      
+<span class="param-type">string</span>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last">Se envía a través del body</td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
 
 
 <dl class="details">
@@ -357,41 +513,15 @@
 
     
         <p class="tag-source">
-            <a href="model_leonchain.ts.html" class="button">View Source</a>
+            <a href="api.ts.html" class="button">View Source</a>
             <span>
-                <a href="model_leonchain.ts.html">model/leonchain.ts</a>, <a href="model_leonchain.ts.html#line14">line 14</a>
+                <a href="api.ts.html">api.ts</a>, <a href="api.ts.html#line63">line 63</a>
             </span>
         </p>
     
 </dl>
 
 
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
 
 
 
@@ -399,85 +529,22 @@
 
 
 
-<section>
-
-<header>
-    
-        <h2>model/Transaction.ts</h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Este archivo consiste en la clase transaccion, la cual contiene la información correspondiente y que se introducirá en el array de transacciones del un bloque</div>
-        
-
-        
 
 
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="model_Transaction.ts.html" class="button">View Source</a>
-            <span>
-                <a href="model_Transaction.ts.html">model/Transaction.ts</a>, <a href="model_Transaction.ts.html#line2">line 2</a>
-            </span>
-        </p>
-    
-</dl>
 
 
-        
-    
-    </div>
-    
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
-    
 
+
+</div>
+            
+            </div>
+        </div>
     
 
     

@@ -7,7 +7,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Block.ts</title>
+  <title> api.ts</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -78,7 +78,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="Block.html">Block</a></li><li><a href="LeonChain.html">LeonChain</a></li><li><a href="Transaction.html">Transaction</a></li></ul><h3>Interfaces</h3><ul><li><a href="Iblockchain.html">Iblockchain</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-Rutas.html">Rutas</a></li></ul><h3>Classes</h3><ul><li><a href="Block.html">Block</a></li><li><a href="LeonChain.html">LeonChain</a></li><li><a href="Transaction.html">Transaction</a></li></ul><h3>Interfaces</h3><ul><li><a href="Iblockchain.html">Iblockchain</a></li></ul><h3><a href="global.html">Global</a></h3></div>
                 
             </nav>
         </div>
@@ -86,7 +86,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>Block.ts</h1>
+                    <h1>api.ts</h1>
                 </header>
                 
 
@@ -95,47 +95,116 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>
+            <pre class="prettyprint source linenums"><code>//Mediante express creamos un servidor.
+import express, { Application, Request, Response, NextFunction} from 'express';
+import sha256 from 'crypto-js/sha256';
+import LeonChain from './model/leonchain';
+import Block from './model/Block';
+import socket from 'socket.io';
+import bodyParser from 'body-parser';
+
+const cors = require('cors')
+
+
 /**
- * Clase Block que serán los bloques de los cuales estará formado el blockchain.
- * @class 
- * @property {number} index   Index del bloque.
- * @property {Date} timestamp Fecha de creación del bloque.
- * @property {object} transactions Conjunto de las transacciones incluidas en el bloque.
- * @property {number} nonce Numero que se intenta resolver para la minería.
- * @property {string} hash Hash codificación mediante el algoritmo sha256 del bloque.
- * @property {string} previousBlockHash Hash del anterior bloque.
+ * @typedef {PORT} PORT El puerto que escuchará el servidor. Se pone un OR porque para que en el caso en que se esté en el modo desarrollo, escuchará el puerto 5000, pero en producción escuchará el puerto correspondiente.
  */
-class Block {
-    index: number;
-    timestamp: number;
-    transactions: object;
-    nonce: number;
-    hash: string;
-    previousBlockHash: string;
+const PORT = process.env.PORT || 5000;
 
-    /**
-     * @constructs
-     * @param index Index del bloque.
-     * @param timestamp Fecha de creación del bloque.
-     * @param transactions Conjunto de las transacciones incluidas en el bloque.
-     * @param nonce Numero que se intenta resolver para la minería.
-     * @param hash Hash codificación mediante el algoritmo sha256 del bloque.
-     * @param previousBlockHash Hash del anterior bloque.
-     */
-    constructor(index: number, timestamp: number, transactions: object, nonce: number, hash: string, previousBlockHash: string) {
-        this.index = index;
-        this.timestamp = timestamp;
-        this.transactions = transactions;
-        this.nonce = nonce;
-        this.hash = hash;
-        this.previousBlockHash = previousBlockHash;
+
+/**
+ * Archivo en el que inicializamos el servidor con todas las dependencias necesarias. 
+ * @file
+ */
+
+/**
+ * Constante global en la que se crea el servidor Express.
+ * @typedef {Application} 
+ */
+const app: Application = express();
+
+/**
+ * El body parser que nos sirve para poder convertir los datos de la api en formato JSON
+ * @typedef {middleware} Bodyparser
+ */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cors())
+
+
+/**
+ * Variable que consiste en la inicialización del blockchain.
+ * @typedef {LeonChain} 
+ */
+const leonChain = new LeonChain();
+
+//Creación del genesis block
+leonChain.creationGenesisBlock();
+
+
+
+/**
+ * Inicializamos el servidor
+ * @typedef {server}
+ */
+const server = app.listen(PORT, () => {
+    console.log("Server running")
+})
+
+/**
+ * Inicializamos el socket io del servidor el cual nos permitirá comunicación en tiempo real con el cliente
+ * @typedef {socket}
+ */
+const io = socket(server);
+
+io.on('connection', (socket) => { 
+    console.log("new connection");
+})
+
+/**
+ * Las rutas y las diferentes funcionalidades de la API
+ * @module Rutas
+ * @requires express
+ */
+
+/**
+ * Ruta que devuelve el blockchain en su totalidad
+ * @name /
+ * @function
+ */
+app.get('/', (req: Request, res: Response, next: NextFunction) => {
+    res.send(leonChain.chain);
+}); 
+
+
+/**
+ * Ruta del tipo POST en la cual enviamos una transacción a través del body para que se añadida a las transacciones pendientes y que posteriormente será añadida a un bloque
+ * 
+ * @name /transaction
+ * @function
+ * @param {string} hospital Se envía a través del body
+ * @param {string} country Se envía a través del body
+ * @param {string} patientInfo Se envía a través del body
+ * @param {string} symptoms Se envía a través del body
+ */
+app.post('/transaction', (req, res) => {
+    const newTransaction3 = leonChain.createNewTransaction(req.body.hospital, req.body.country, req.body.patientInfo, req.body.symptoms);
+    const blockIndex = leonChain.addTransactionToPendingTransactions(newTransaction3);
+    
+    if(leonChain.pendingTransactions.length > 10){
+        leonChain.createNewBlock()
+        io.emit("updateChain", leonChain.chain)
     }
+    
+    res.json({  idTransaction: `${newTransaction3.transactionId} ` });
+});
 
-}
-
-
-export default Block;</code></pre>
+/*
+app.get('/minar', (req: Request, res: Response, next: NextFunction) => {
+    //It works more or less, but we should find a way with socket to just send the mining request to just one client
+    let newBlock = leonChain.createNewBlock();
+});
+*/</code></pre>
         </article>
     </section>
 
